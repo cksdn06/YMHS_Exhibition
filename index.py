@@ -216,8 +216,8 @@ def run_script():
     #아 모르게따=_=
     
 def create_qr_code():
-    #특정 폴더로 바꾸기(아마 누군가의 google drive 폴더겠지) 에흉
-    url = "https://drive.google.com/drive/folders/1CBFFj7OqV9jC8htkotR6ytYYgnmPvmPw"
+    # INSTAGRAM QR (@com_on_official)
+    url = "https://www.instagram.com/com_on_official/"
     qr = qrcode.QRCode(
         version=1,
         error_correction=qrcode.constants.ERROR_CORRECT_L,
