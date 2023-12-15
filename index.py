@@ -13,8 +13,8 @@ image_folder = "C:\\Users\\User\\Desktop\\New"
 # 카메라를 열고 이미지를 저장하는 함수
 def capture_image():
     # 카메라 디바이스 열기 
-    # (0은 기본 카메라, 아마 다른카메라로 바꿀듯 ㅇㅇ)
-    # ("장치 관리자"로 이동하고 "이미징 장치" 또는 "카메라"를 확인하여 카메라 정보를 얻을 수 있다네 ㅇㅇㅋ)
+    # (0은 기본 카메라, 아마 다른카메라로 바꿀듯)
+    # ("장치 관리자"로 이동하고 "이미징 장치" 또는 "카메라"를 확인하여 카메라 정보를 얻을 수 있다네)
     # 0, 1, 2, 3이렇게 넣어봐야됨------ㅣ
     cap = cv2.VideoCapture(0)#<--이거-ㅣ
     
@@ -27,12 +27,6 @@ def capture_image():
     # 저장할 이미지의 번호 초기화
     image_count = 0
 
-    #이거 여기서부터 있잖아요 그 인제부터 파일을 어디 저장할지 지정하는 방법을 알아내야 되요
-    #ㅆㅂ 안되 암것도 안되!!!
-    #말이 되 왜 저장은 잘되는데 ㅆ 위치 지정이 안되는거야 이거만 되면
-    #파일 이름 image{i}.jpg를 New라는 파일에 저장한다 하면
-    #짧아지는데 ㅜㅜㅜㅜㅜㅜㅜㅜㅜ
-    #왜 안되냐고!!!!!!!!!!!!!!!!!!!
     while True:
         # 프레임 읽기
         ret, frame = cap.read()
@@ -118,13 +112,7 @@ def create_image():
     image3 = Image.open("C:\\Users\\User\\Desktop\\New\\image3.jpg")
     image4 = Image.open("C:\\Users\\User\\Desktop\\New\\image4.jpg")
 
-    #image{n}.rotate 함수를 좀더 연구하자
-    #근데 이건 할수도있고 안할수도 있음
-    #회전시키는 코드
-    #회전시키는 코드
-    #회전시키는 코드
-    #회전시키는 코드
-
+    # 크기 조정 (ANTIALIAS)
     image1 = image1.resize((image_width_px, image_height_px), Image.ANTIALIAS)
     image2 = image2.resize((image_width_px, image_height_px), Image.ANTIALIAS)
     image3 = image3.resize((image_width_px, image_height_px), Image.ANTIALIAS)
@@ -184,7 +172,6 @@ def run_script():
     desktop_path = os.path.expanduser("C:\\Users\\User\\Desktop\\output")
 
     #이 밑의 실행문은 컴퓨터에 따라 다르게 함
-    #Ai실 컴퓨터 보고 하자~~~
     
     # output file에 있는 output.jpg 파일 열기
     file_path = os.path.join(desktop_path, 'output.jpg')
@@ -209,12 +196,8 @@ def run_script():
     pyautogui.hotkey('alt', 'f4')
     # alt + f4를 누르기(이거는 사진창 없에기)
     pyautogui.hotkey('alt', 'f4')
-    
-    #찬우의 코드로 연결되도록하는 파이썬 코드를 쓰기는 써야되는데 잘 모르겠음
-    #이게 뜻대로 안됨 빡침
-    #아 이게 맟나
-    #아 모르게따=_=
-    
+
+# QR 코드 (**폐지됨**)
 def create_qr_code():
     # INSTAGRAM QR (@com_on_official)
     url = "https://www.instagram.com/com_on_official/"
@@ -229,8 +212,7 @@ def create_qr_code():
     img = qr.make_image(fill_color="black", back_color="white")
 
     # 이미지 저장하지 않고 바로 열기
-    img.show() 
-
+    img.show()
 # GUI 생성
 root = tk.Tk()
 root.title("이미지 생성 및 인쇄")
@@ -238,6 +220,7 @@ root.title("이미지 생성 및 인쇄")
 # 폰트 설정
 custom_font = ("Helvetica", 30)
 
+# 버튼 설정
 cap_button = tk.Button(root, text="이미지 캡처", command=on_button_click, font=custom_font, width=20, height=3)
 create_button = tk.Button(root, text="이미지 생성", command=create_image, font=custom_font, width=20, height=3)
 run_button = tk.Button(root, text="인쇄", command=run_script, font=custom_font, width=20, height=3)
